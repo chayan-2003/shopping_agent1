@@ -16,20 +16,33 @@ A full-stack AI-powered shopping assistant application that combines a FastAPI b
 
 ```
 shopping_query_agent/
-├── app/                      # FastAPI Backend
-│   ├── ai/                  # AI Assistant & Tools
-│   │   ├── assistant.py     # Chat interface with Gemini
-│   │   └── tools.py         # LangChain tools for shopping
-│   ├── services/            # Business logic
-│   │   ├── cart_service.py  # Cart operations
+├── app/                        # FastAPI Backend
+│   ├── api/                    # HTTP layer (routes/controllers)
+│   │   └── routes/
+│   │       ├── cart.py
+│   │       ├── chat.py
+│   │       ├── health.py
+│   │       ├── orders.py
+│   │       └── products.py
+│   ├── core/                   # Core app config
+│   │   └── config.py
+│   ├── db/                     # Database session, models, seed
+│   │   ├── session.py
+│   │   ├── models.py
+│   │   └── seed.py
+│   ├── schemas/                # Pydantic schemas by domain
+│   │   ├── cart.py
+│   │   ├── chat.py
+│   │   ├── order.py
+│   │   └── product.py
+│   ├── ai/                     # AI assistant integration
+│   │   ├── assistant.py
+│   │   └── tools.py
+│   ├── services/               # Business logic layer
+│   │   ├── cart_service.py
 │   │   ├── catalog_service.py
-│   │   └── order_service.py # Order & checkout logic
-│   ├── models.py            # SQLAlchemy models
-│   ├── schemas.py           # Pydantic schemas
-│   ├── database.py          # DB configuration
-│   ├── config.py            # Settings
-│   ├── main.py              # FastAPI app
-│   └── seed.py              # Sample data
+│   │   └── order_service.py
+│   └── main.py                 # FastAPI application entrypoint
 ├── frontend/                 # React TypeScript Frontend
 │   ├── src/
 │   │   ├── App.tsx          # Main component

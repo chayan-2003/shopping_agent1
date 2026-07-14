@@ -6,7 +6,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from sqlalchemy.orm import Session
 
 from app.ai.tools import build_tools
-from app.config import settings
+from app.core.config import settings
 
 
 class ShoppingAssistant:
@@ -16,8 +16,6 @@ class ShoppingAssistant:
     def chat(self, db: Session, session_id: str, message: str) -> str:
         if not settings.google_api_key:
             return "GOOGLE_API_KEY is not configured. Add it to your environment or .env file."
-        print("Model:", settings.google_model)
-        print("API Key:", settings.google_api_key[:8] + "..." if settings.google_api_key else None)
         llm = ChatGoogleGenerativeAI(
             model=settings.google_model,
             google_api_key=settings.google_api_key,

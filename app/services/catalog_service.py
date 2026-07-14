@@ -1,7 +1,7 @@
 from sqlalchemy import and_, select
 from sqlalchemy.orm import Session
 
-from app.models import Product
+from app.db.models import Product
 
 
 def search_products(

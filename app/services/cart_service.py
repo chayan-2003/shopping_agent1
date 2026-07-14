@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import CartItem
+from app.db.models import CartItem
 from app.services.catalog_service import get_product_by_id
 
 
